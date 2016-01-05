@@ -265,8 +265,9 @@ main (int argc, char ** argv)
   //////////////////////////////  //////////////////////////////
   //////////////////////////////  //////////////////////////////
   
-  // If we're using the single camera transform no negative z allowed since we use log(z)
-  if (!disable_transform)
+  // If the cloud is organized and we haven't disabled the transform we need to
+  // check that there are no negative z values, since we use log(z)
+  if (cloud->isOrganized () && !disable_transform)
   {
     for (PointCloudT::iterator cloud_itr = cloud->begin (); cloud_itr != cloud->end (); ++cloud_itr)
       if (cloud_itr->z < 0)
@@ -279,7 +280,11 @@ main (int argc, char ** argv)
     std::cout <<"You can disable the transform with the --NT flag\n";    
   }
   
-  pcl::SupervoxelClustering<PointT> super (voxel_resolution, seed_resolution,!disable_transform);
+  pcl::SupervoxelClustering<PointT> super (voxel_resolution, seed_resolution);
+  //If we manually disabled the transform then do so, otherwise the default 
+  //behavior will take place (true for organized, false for unorganized)
+  if (disable_transform)
+    super.setUseSingleCameraTransform (false);
   super.setInputCloud (cloud);
   if (has_normals)
     super.setNormalCloud (input_normals);
@@ -314,7 +319,7 @@ main (int argc, char ** argv)
     pcl::io::savePNGFile (out_label_path, *full_labeled_cloud, "label");
     pcl::io::savePNGFile (refined_out_label_path, *refined_full_labeled_cloud, "label");
     //Save RGB from labels
-    pcl::io::PointCloudImageExtractorFromLabelField<PointLT> pcie (pcie.io::PointCloudImageExtractorFromLabelField<PointLT>::COLORS_RGB_GLASBEY);
+    pcl::io::PointCloudImageExtractorFromLabelField<PointLT> pcie (pcl::io::PointCloudImageExtractorFromLabelField<PointLT>::COLORS_RGB_GLASBEY);
     //We need to set this to account for NAN points in the organized cloud
     pcie.setPaintNaNsWithBlack (true);
     pcl::PCLImage image;
@@ -326,8 +331,6 @@ main (int argc, char ** argv)
   
   std::cout << "Constructing Boost Graph Library Adjacency List...\n";
   typedef boost::adjacency_list<boost::setS, boost::setS, boost::undirectedS, uint32_t, float> VoxelAdjacencyList;
-  typedef VoxelAdjacencyList::vertex_descriptor VoxelID;
-  typedef VoxelAdjacencyList::edge_descriptor EdgeID;
   VoxelAdjacencyList supervoxel_adjacency_list;
   super.getSupervoxelAdjacencyList (supervoxel_adjacency_list);
 

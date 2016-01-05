@@ -84,6 +84,21 @@ Basic Usage
      .. |mi_2| image:: images/pcl_logo.png
                :height: 75px
 
+  * :ref:`compiling_pcl_posix`
+
+     =======  ======
+     |mi_11|  Title: **Compiling PCL from source on POSIX compliant systems**
+
+              Author: *Victor Lamoine*
+
+              Compatibility: > PCL 1.0
+
+              In this tutorial, we will explain how to compile PCL from sources on POSIX/Unix systems.
+     =======  ======
+
+     .. |mi_11| image:: images/pcl_logo.png
+               :height: 120px
+
   * :ref:`building_pcl`
 
      ======  ======
@@ -188,21 +203,6 @@ Basic Usage
 
      .. |mi_11| image:: images/pcl_logo.png
                :height: 75px
-
-  * :ref:`qt_visualizer`
-
-     ======  ======
-     |mi_9|  Title: **Create a PCL visualizer in Qt with cmake**
-
-             Author: *Victor Lamoine*
-
-             Compatibility: > PCL 1.5
-
-             This tutorial shows you how to create a PCL visualizer within a Qt application.
-     ======  ======
-
-     .. |mi_9| image:: images/qt_visualizer/qt.png
-               :height: 128px
 
   * :ref:`matrix_transform`
 
@@ -616,6 +616,35 @@ I/O
      .. |i_o7| image:: images/ensenso/ids.png
                :height: 165px
 
+  * :ref:`david_sdk`
+
+     ======  ======
+     |i_o8|  Title: **Grabbing point clouds / meshes from davidSDK scanners**
+
+             Author: *Victor Lamoine*
+
+             Compatibility: >= PCL 1.8.0
+
+             In this tutorial, we will learn how to acquire point cloud or mesh data from a davidSDK scanner.
+     ======  ======
+
+     .. |i_o8| image:: images/davidsdk/david.png
+               :height: 70px
+
+  * :ref:`depth_sense_grabber`
+
+     ======  ======
+     |i_o9|  Title: **Grabbing point clouds from DepthSense cameras**
+
+             Author: *Sergey Alexandrov*
+
+             Compatibility: >= PCL 1.8.0
+
+             In this tutorial we will learn how to setup and use DepthSense cameras within PCL on both Linux and Windows platforms.
+     ======  ======
+
+     .. |i_o9| image:: images/creative_camera.jpg
+               :height: 70px
 
 .. _keypoints_tutorial:
 
@@ -1240,6 +1269,37 @@ Visualization
 
      .. |vi_5| image:: images/visualization_small.png
                :height: 120px
+
+  * :ref:`qt_visualizer`
+
+     ======  ======
+     |vi_6|  Title: **Create a PCL visualizer in Qt with cmake**
+
+             Author: *Victor Lamoine*
+
+             Compatibility: > PCL 1.5
+
+             This tutorial shows you how to create a PCL visualizer within a Qt application.
+     ======  ======
+
+     .. |vi_6| image:: images/qt_visualizer/qt.png
+               :height: 128px
+
+  * :ref:`qt_colorize_cloud`
+
+     ======  ======
+     |vi_7|  Title: **Create a PCL visualizer in Qt to colorize clouds**
+
+              Author: *Victor Lamoine*
+
+              Compatibility: > PCL 1.5
+
+              This tutorial shows you how to color point clouds within a Qt application.
+     ======  ======
+
+     .. |vi_7| image:: images/qt_visualizer/qt.png
+               :height: 128px
+
 
 .. _applications_tutorial:
 
